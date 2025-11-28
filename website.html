@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajeann Website</title>
+
+<style>
+    body {
+        background: linear-gradient(135deg, #ffc6e6, #ffe6f8);
+        font-family: Poppins, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    h1 {
+        color: #ff3f9e;
+        margin-top: 40px; 
+    }
+
+    .menu-box {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .menu-btn {
+        width: 250px;
+        padding: 15px;
+        background: white;
+        color: #ff3f9e;
+        font-size: 18px;
+        border-radius: 20px;
+        border: none;
+        box-shadow: 0 5px 15px rgba(255, 100, 160, 0.3);
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .menu-btn:hover {
+        background: #ff66b2;
+        color: white;
+        transform: translateY(-4px);
+    }
+
+    .logout {
+        margin-top: 30px;
+        font-size: 16px;
+        color: white;
+        display: inline-block;
+        padding: 10px 20px;
+        background: #ff3f9e;
+        border-radius: 12px;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .logout:hover {
+        background: #ff1a8c;
+    }
+    img {
+        width: 400px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+     .heart {
+      position: absolute;
+      width: 20px; height: 20px;
+      background: #ff6ab3;
+      transform: rotate(45deg);
+      opacity: 0.8;
+      animation: floatUp 6s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position:absolute;
+      width: 20px; height: 20px;
+      background: #ff6ab3;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity:0.8; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+
+<h1>Welcome to My First Website</h1>
+
+<img src="https://raw.githubusercontent.com/aenaluangco-cpu/Aena-Luangco-Portfolio/0a33eccadaeaf59ecf526384b1543d3c0d527317/aena.jpg" alt="Profile">
+
+
+<div class="menu-box">
+    <button onclick="location.href='aboutme.html'" class="menu-btn">About Me</button>
+    <button onclick="location.href='family.html'" class="menu-btn">My Family</button>
+    <button onclick="location.href='hobbies.html'" class="menu-btn">My Hobbies</button>
+    <button onclick="location.href='socials.html'" class="menu-btn">Social Media</button>
+</div>
+
+<a href="index.html" class="logout">Log Out</a>
+<script>
+    function makeHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(makeHeart, 1000     );
+    
+  </script>
+
+</body>
+</html>
+

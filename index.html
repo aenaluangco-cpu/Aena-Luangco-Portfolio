@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Luangco Portfolio</title>
+  <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
+    body, html { height:100%; font-family: 'Poppins', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #ffc6e6, #ffe6f8);
+      overflow: hidden;
+    }
+
+  
+    .heart {
+      position: absolute;
+      width: 20px; height: 20px;
+      background: #ff6ab3;
+      transform: rotate(45deg);
+      opacity: 0.8;
+      animation: floatUp 6s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position:absolute;
+      width: 20px; height: 20px;
+      background: #ff6ab3;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity:0.8; }
+      100% { transform: translateY(-800px) rotate(45deg); opacity: 0; }
+    }
+
+    .login-container {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 100, 160, 0.4);
+      width: 320px;
+      text-align: center;
+    }
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #ff3f9e;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 2px solid #ffb3d9;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    .login-box input:focus {
+      border-color: #ff66b2;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .login-box button:hover {
+      background: #ff4a99;
+      transform: translateY(-2px);
+    }
+    #error {
+      color: #d6005f;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Log In</h2>
+      <form onsubmit="return login()">
+        <input type="text" id="username" placeholder="Username" />
+        <input type="password" id="password" placeholder="Password" />
+        <button type="submit">Login</button>
+        <p id="error"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function makeHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.width = heart.style.height = (10 + Math.random() * 20) + 'px';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }
+    setInterval(makeHeart, 1000);
+
+
+    function login() {
+      const u = document.getElementById('username').value;
+      const p = document.getElementById('password').value;
+      if (u === 'ajeann' && p === 'pink123') {
+        window.location.href = 'website.html'; 
+      } else {
+        document.getElementById('error').textContent = 'Wrong username or password!';
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
